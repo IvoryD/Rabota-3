@@ -15,27 +15,7 @@ public class Obfuskator {
         String path2 = path + "Obfus.java";
         File oldFile = new File(path); 
         File newFile = new File(path2);
-        if (!newFile.createNewFile()) { 
-            newFile.delete();
-            newFile.createNewFile();
-        }
-        int i = 0;
-        boolean sw = true;
-        try (FileInputStream inputStr = new FileInputStream(oldFile);
-                FileOutputStream outputStr = new FileOutputStream(newFile)) {
-            while (true) { 
-                i = inputStr.read();
-                if (i == -1) {
-                    break;
-                }
-                if (i == 32&&sw) {
-                    while (i == 32) { 
-                        i = inputStr.read();
-                    }
-                    outputStr.write(komment.getBytes());
-                }
-                if (i != 10&&i!=13) { 
-                    if(i == 34) sw = !sw;
+
                     outputStr.write(i);
                 }
             }
